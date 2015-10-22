@@ -4,10 +4,13 @@ var DEFAULT_BASEDIR = '/var/lib/collectd/rrd'; // collectd default
 
 var config = require('./config.js');
 var basedir = config.basedir || DEFAULT_BASEDIR;
+var express = require('express');
 var app = require('rrd-server')(basedir);
 var morgan = require('morgan');
 
-app = app.use(morgan('combined'));
+
+app = app.use(morgan('combined'))
+         .use(express.static('static'));
 
 var host = config.host || DEFAULT_HOST;
 var port = config.port || DEFAULT_PORT;
