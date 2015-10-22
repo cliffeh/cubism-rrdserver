@@ -1,0 +1,27 @@
+{
+  "name": "cubism-rrdserver",
+  "version": "0.0.1",
+  "description": "module for creating cubism graphs from RRDs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cliffeh/cubism-rrdserver.git"
+  },
+  "keywords": [
+    "rrd",
+    "cubism"
+  ],
+  "author": "Cliff Snyder <cliff.snyder@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cliffeh/cubism-rrdserver/issues"
+  },
+  "homepage": "https://github.com/cliffeh/cubism-rrdserver#readme",
+  "dependencies": {
+    "cubism": "^1.6.0",
+    "rrd-server": "0.0.2"
+  }
+}
