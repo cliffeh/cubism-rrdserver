@@ -1,0 +1,10 @@
+[
+  ["odin.cpu-0.cpu-idle", "AVERAGE"],
+  ["odin.cpu-1.cpu-idle", "AVERAGE"],
+  ["odin.cpu-2.cpu-idle", "AVERAGE"],
+  ["odin.cpu-3.cpu-idle", "AVERAGE"],
+  ["odin.cpu-4.cpu-idle", "AVERAGE"],
+  ["odin.cpu-5.cpu-idle", "AVERAGE"],
+  ["odin.cpu-6.cpu-idle", "AVERAGE"],
+  ["odin.cpu-7.cpu-idle", "AVERAGE"]
+]

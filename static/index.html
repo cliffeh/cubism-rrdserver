@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>cubism-rrdserver</title>
+<style>
+
+@import url(style.css);
+
+</style>
+<body>
+<script src="d3.min.js"></script>
+<script src="cubism.v1.min.js"></script>
+<script src="cubism.rrd-server.js"></script>
+<script>
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+// var s = getParameterByName('step') || 1;
+// var f = getParameterByName('filter') || '';
+
+var context = cubism.context()
+    .step(10000)         // 10 seconds
+    .size(1200)          // 1200 points (default for collectd rows); change this if your rrd has more/less rows
+    .serverDelay(10000); // 10 seconds delay     
+
+var rrdserver = cubism.rrdserver(context);
+
+d3.select("body").selectAll(".axis")
+    .data(["top", "bottom"])
+  .enter().append("div")
+    .attr("class", function(d) { return d + " axis"; })
+    .each(function(d) { d3.select(this).call(context.axis().ticks(12).orient(d)); });
+
+d3.select("body").append("div")
+    .attr("class", "rule")
+    .call(context.rule());
+
+d3.json('metrics.json', function(metrics) {
+  d3.select("body").selectAll(".horizon")
+      .data(metrics.map(function(metric){ return rrdserver.metric(metric[0], metric[1]); } ))
+    .enter().insert("div", ".bottom")
+      .attr("class", "horizon")
+      .call(context.horizon());
+});
+
+context.on("focus", function(i) {
+  d3.selectAll(".value").style("right", i == null ? null : context.size() - i + "px");
+});
+
+</script>
