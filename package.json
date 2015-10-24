@@ -1,6 +1,6 @@
 {
   "name": "cubism-rrdserver",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "module for creating cubism graphs from RRDs",
   "main": "index.js",
   "scripts": {
